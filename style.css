@@ -13,6 +13,16 @@
             margin-bottom: 1rem;
         }
 
+        input, select, textarea { 
+            background-color: #FDFBF7 !important;
+            border: 1px solid #EADDCA !important;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none !important;
+            border-color: #634832 !important;
+            box-shadow: 0 0 0 3px rgba(99, 72, 50, 0.1);
+        }
+
         #lightbox-img {
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -24,8 +34,6 @@
                 border-color: #634832 !important;
                 background-color: #FDFBF7 !important;
                 box-shadow: 0 20px 25px -5px rgba(99, 72, 50, 0.1), 0 10px 10px -5px rgba(99, 72, 50, 0.04);
-                transform: translateY(-5px);
-                box-shadow: 0 15px 30px -10px rgba(99, 72, 50, 0.2);
             }
         .scroll-container-wrapper {
             padding-top: 20px; 

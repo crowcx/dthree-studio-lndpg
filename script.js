@@ -40,8 +40,8 @@ const images = [
             },
             outdoor: {
                 packages: [
-                    { name: "Outdoor Lite", price: "Rp 1.250.000", bg: "1 Fotografer", pose: "Unlimited", members: "Maks. 5 Orang", costume: "Tidak Ada", print: "10 File Edit", softfile: "USB Flashdisk" },
-                    { name: "Outdoor Pro", price: "Rp 1.750.000", bg: "2 Fotografer", pose: "Unlimited", members: "Maks. 10 Orang", costume: "1 Album 10 Sheet & Foto 16RS + Frame", print: "20 File Edit", softfile: "USB Flashdisk" },
+                    { name: "Outdoor Lite", price: "Rp 1.250.000", bg: "1 Fotografer", pose: "Unlimited shoot", members: "Unlimited member", costume: "Tidak Ada", print: "10 File Edit", softfile: "USB Flashdisk" },
+                    { name: "Outdoor Pro", price: "Rp 1.750.000", bg: "2 Fotografer", pose: "Unlimited shoot", members: "Unlimited member", costume: "1 Album 10 Sheet & 1 Foto 16RS + Bingkai", print: "20 File Edit", softfile: "USB Flashdisk" }
                 ],
                 features: ["Jumlah Fotografer", "Sesi Gaya", "Kapasitas", "Tambahan Fitur", "File Editing", "Akses Softfile"]
             },
@@ -87,21 +87,34 @@ function switchCategory(cat) {
                 </div>
             `).join('');
 
-            // Render Comparison Table
+            // Render Comparison Table (dynamic columns)
             const rows = data.features;
+            const packages = data.packages;
+
+            // Update the table header to match number of packages
+            const theadRow = document.querySelector('table thead tr');
+            if (theadRow) {
+                theadRow.innerHTML = `
+                    <th class="p-6">Fitur Utama</th>
+                    ${packages.map((pkg, idx) => `<th class="p-6 text-center">${pkg.name || 'Paket ' + (idx+1)}</th>`).join('')}
+                `;
+            }
+
+            const keys = ['bg', 'pose', 'members', 'costume', 'print', 'softfile'];
             comparisonBody.innerHTML = rows.map((feature, i) => {
-                const keys = ['bg', 'pose', 'members', 'costume', 'print', 'softfile'];
                 return `
                     <tr class="border-b border-[#F5EFE6]">
                         <td class="p-6 font-bold text-[#634832]">${feature}</td>
-                        <td class="p-6 text-center">${data.packages[0][keys[i]]}</td>
-                        <td class="p-6 text-center bg-[#FDFBF7] font-semibold">${data.packages[1][keys[i]]}</td>
-                        <td class="p-6 text-center">${data.packages[2][keys[i]]}</td>
+                        ${packages.map((pkg, j) => {
+                            const val = pkg[keys[i]] ?? '-';
+                            const classes = `p-6 text-center ${j === 1 ? 'bg-[#FDFBF7] font-semibold' : ''}`;
+                            return `<td class="${classes}">${val}</td>`;
+                        }).join('')}
                     </tr>
                 `;
             }).join('');
         }
-        
+
         if (pricingContainer) switchCategory('family');
 
 const galleryWrapper = document.getElementById('gallery-wrapper');
@@ -163,4 +176,3 @@ function renderGallery() {
             if (e.key === "ArrowLeft") prevImg();
             if (e.key === "Escape") closeLightbox();
         });
-

@@ -1,0 +1,196 @@
+<!--
+        _     _            _____     _          _ _    
+  /\  /(_) __| |_   _ _ __/__   \___| | ___ __ (_) | __
+ / /_/ / |/ _` | | | | '_ \ / /\/ _ \ |/ / '_ \| | |/ /
+/ __  /| | (_| | |_| | |_) / / |  __/   <| | | | |   < 
+\/ /_/ |_|\__,_|\__,_| .__/\/   \___|_|\_\_| |_|_|_|\_\
+                     |_|                               
+
+                Dibuat oleh TeknikBaik
+-->
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Foto | Dthree Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel=stylesheet href="style.css">
+    <link rel="shortcut icon" href="asset/icont.jpg" type="image/x-icon">
+
+</head>
+<body class="bg-[#FDFBF7] text-[#4A3728]">
+
+    <header class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md shadow-sm border-b border-[#EADDCA]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-extrabold tracking-tighter text-[#634832]">DTHREE STUDIO</a>
+            <div class="hidden md:flex space-x-8 font-semibold text-[#826A56]">
+                <a href="pricelist.html" class="hover:text-[#634832] transition">Price List</a>
+                <a href="galeri.html" class="hover:text-[#634832] transition">Gallery</a>
+                <a href="#contact" class="hover:text-[#634832] transition">Kontak</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-[#634832] text-2xl focus:outline-none z-50">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-8 space-y-6 shadow-xl opacity-0 -translate-y-10 pointer-events-none transition-all duration-300 ease-in-out">
+            <a href="pricelist.html" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Price List</a>
+            <a href="galeri.html" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Gallery</a>
+            <a href="#contact" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Kontak</a>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 bg-[#F5EFE6] text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#634832] mb-3">Booking Foto</h2>
+        <p class="text-[#826A56] italic px-6">Jika mau booking, isi formulir di bawah ini, ya!</p>
+    </section>
+
+    <section class="py-16 container mx-auto px-6 max-w-2xl">
+        <form id="bookingForm" class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-[#EADDCA] space-y-6">
+            
+            <div>
+                <label class="block font-bold text-[#634832] mb-2">Tipe Foto Studio</label>
+                <select id="tipeStudio" class="w-full p-4 rounded-2xl appearance-none cursor-pointer" required onchange="updatePaket()">
+                    <option value="">Pilih Tipe...</option>
+                    <option value="family">Family/Graduate Indoor</option>
+                    <option value="prewed">Pre-Wedding Indoor</option>
+                    <option value="outdoor">Studio Outdoor</option>
+                    <option value="event">Sewa Acara</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-bold text-[#634832] mb-2">Paket Studio</label>
+                <select id="paketStudio" class="w-full p-4 rounded-2xl appearance-none cursor-pointer" required disabled>
+                    <option value="">Pilih Tipe Foto Terlebih Dahulu</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block font-bold text-[#634832] mb-2">Nama Pelanggan</label>
+                    <input type="text" id="nama" class="w-full p-4 rounded-2xl" placeholder="Nama Lengkap" required>
+                </div>
+                <div>
+                    <label class="block font-bold text-[#634832] mb-2">Nomor WhatsApp</label>
+                    <input type="tel" id="whatsapp" class="w-full p-4 rounded-2xl" placeholder="0812345xxx" required>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block font-bold text-[#634832] mb-2">Tanggal Booking (Min H-1)</label>
+                    <input type="date" id="tanggal" class="w-full p-4 rounded-2xl" required>
+                </div>
+                <div>
+                    <label class="block font-bold text-[#634832] mb-2">Jam Booking (UTC+7)</label>
+                    <input type="time" id="jam" class="w-full p-4 rounded-2xl" required>
+                </div>
+            </div>
+
+            <div id="jumlahOrangContainer" class="hidden">
+                <label class="block font-bold text-[#634832] mb-2">Jumlah Anggota Keluarga</label>
+                <input type="number" id="jumlahOrang" class="w-full p-4 rounded-2xl" placeholder="Jumlah orang">
+            </div>
+
+            <div>
+                <label class="block font-bold text-[#634832] mb-2">Catatan</label>
+                <textarea id="catatan" class="w-full p-4 rounded-2xl h-32" placeholder="misal: lokasi foto, request tambahan, pertanyaan lain"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-[#634832] text-white py-5 rounded-2xl font-extrabold hover:bg-[#4A3728] transition-all transform hover:scale-[1.02] shadow-lg uppercase tracking-widest">
+                Kirim Booking via WhatsApp
+            </button>
+        </form>
+    </section>
+
+    <section id="contact" class="py-24 bg-[#FDFBF7]">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-extrabold text-[#634832] mb-12">Lokasi Studio Kami</h3>
+            <div class="h-[450px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=DTHREE%20FOTO%20STUDIO%2C%20Jalan%20Rajawali%2C%20Palangka%2C%20Palangka%20Raya%20City%2C%20Central%20Kalimantan%2C%20Indonesia&maptype=roadmap" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-[#EADDCA] bg-white">
+        <div class="container mx-auto px-6 text-center text-[#826A56]">
+            <p class="font-bold tracking-widest text-sm uppercase">© 2026 Dthree Studio Palangka Raya</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Set Minimal Tanggal H-1
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        document.getElementById('tanggal').min = today.toISOString().split('T')[0];
+
+        function updatePaket() {
+            const tipe = document.getElementById('tipeStudio').value;
+            const paketDropdown = document.getElementById('paketStudio');
+            const familySection = document.getElementById('jumlahOrangContainer');
+            
+            paketDropdown.innerHTML = '<option value="">Pilih Paket...</option>';
+            
+            if (tipe && pricingData[tipe]) {
+                paketDropdown.disabled = false;
+                pricingData[tipe].packages.forEach((pkg, index) => {
+                    const option = document.createElement('option');
+                    option.value = index;
+                    option.text = `${pkg.name} (${pkg.price})`;
+                    paketDropdown.add(option);
+                });
+                
+                // Tampilkan jumlah orang hanya jika Family
+                familySection.classList.toggle('hidden', tipe !== 'family');
+            } else {
+                paketDropdown.disabled = true;
+            }
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const tipe = document.getElementById('tipeStudio').options[document.getElementById('tipeStudio').selectedIndex].text;
+            const tipeKey = document.getElementById('tipeStudio').value;
+            const paketIdx = document.getElementById('paketStudio').value;
+            const paketData = pricingData[tipeKey].packages[paketIdx];
+            
+            const nama = document.getElementById('nama').value;
+            const wa = document.getElementById('whatsapp').value;
+            const tglRaw = document.getElementById('tanggal').value;
+            const jam = document.getElementById('jam').value;
+            const jumlah = document.getElementById('jumlahOrang').value || "-";
+            const catatan = document.getElementById('catatan').value || "-";
+            let tglFormatted = "-";
+
+            if (tglRaw) {
+                const [year, month, day] = tglRaw.split('-');
+                tglFormatted = `${day}/${month}/${year}`;
+            }
+
+            // Format Pesan WhatsApp
+            const message = `Halo, saya mau booking foto ${tipe}
+
+Nama: ${nama}
+Nomor WhatsApp: ${wa}
+Paket: ${paketData.name}
+Harga: ${paketData.price}
+Tanggal: ${tglFormatted} - ${jam}
+Jumlah orang: ${jumlah}
+Catatan:
+${catatan}
+
+Dthree Studio, Palangka Raya.
+https://maps.app.goo.gl/cCWsWezqitZkWMn48
+0813-2269-9098`;
+
+            const whatsappUrl = `https://wa.me/6281322699098?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
