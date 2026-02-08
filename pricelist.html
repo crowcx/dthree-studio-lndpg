@@ -1,0 +1,269 @@
+<!--
+        _     _            _____     _          _ _    
+  /\  /(_) __| |_   _ _ __/__   \___| | ___ __ (_) | __
+ / /_/ / |/ _` | | | | '_ \ / /\/ _ \ |/ / '_ \| | |/ /
+/ __  /| | (_| | |_| | |_) / / |  __/   <| | | | |   < 
+\/ /_/ |_|\__,_|\__,_| .__/\/   \___|_|\_\_| |_|_|_|\_\
+                     |_|                               
+
+                Dibuat oleh TeknikBaik
+-->
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price List | Dthree Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .active-card {
+                border-color: #634832 !important;
+                background-color: #FDFBF7 !important;
+                box-shadow: 0 20px 25px -5px rgba(99, 72, 50, 0.1), 0 10px 10px -5px rgba(99, 72, 50, 0.04);
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px -10px rgba(99, 72, 50, 0.2);
+            }
+        .scroll-container-wrapper {
+            padding-top: 20px; 
+            margin-top: -20px;
+        }
+            
+            .snap-center {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+    </style>
+</head>
+<body class="bg-[#FDFBF7] text-[#4A3728]">
+
+    <header class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md shadow-sm border-b border-[#EADDCA]">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-extrabold tracking-tighter text-[#634832]">DTHREE STUDIO</a>
+            
+            <div class="hidden md:flex space-x-8 font-semibold text-[#826A56]">
+                <a href="pricelist.html" class="hover:text-[#634832] transition border-b-2 border-[#634832]">Price List</a>
+                <a href="galeri.html" class="hover:text-[#634832] transition ">Gallery</a>
+                <a href="#contact" class="hover:text-[#634832] transition">Kontak</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-[#634832] text-2xl focus:outline-none z-50">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-8 space-y-6 shadow-xl opacity-0 -translate-y-10 pointer-events-none transition-all duration-300 ease-in-out">
+            <a href="pricelist.html" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Price List</a>
+            <a href="galeri.html" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Gallery</a>
+            <a href="#contact" class="block font-bold text-[#826A56] hover:text-[#634832] text-xl">Kontak</a>
+            <hr class="border-[#EADDCA]">
+            <div class="flex space-x-6 pt-2">
+                <a href="https://instagram.com/dthree_studio" class="text-[#826A56] text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/6281322699098" class="text-[#826A56] text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="pt-32 pb-12 bg-[#F5EFE6] text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#634832] mb-3">Daftar Harga</h2>
+        <p class="text-[#826A56] italic px-6">Pilih kategori paket yang sesuai dengan kebutuhan momen berhargamu.</p>
+    </section>
+
+    <section class="py-12 container mx-auto px-6">
+        <div class="scroll-container-wrapper">
+        <div class="flex overflow-x-auto pb-8 gap-5 no-scrollbar snap-x">
+            
+            <div onclick="switchCategory('family')" id="cat-family" class="snap-center flex-shrink-0 w-64 cursor-pointer border-2 border-transparent bg-white p-10 rounded-[2.5rem] shadow-sm transition-all duration-300 active-card flex flex-col items-start">
+                <div class="w-12 h-12 flex items-center justify-center bg-[#F5EFE6] rounded-2xl mb-6">
+                    <i class="fa-solid fa-users text-[#634832] text-xl"></i>
+                </div>
+                <h4 class="font-extrabold text-lg leading-tight text-[#4A3728]">Family/Graduate<br>Indoor</h4>
+            </div>
+
+            <div onclick="switchCategory('prewed')" id="cat-prewed" class="snap-center flex-shrink-0 w-64 cursor-pointer border-2 border-transparent bg-white p-10 rounded-[2.5rem] shadow-sm transition-all duration-300 flex flex-col items-start">
+                <div class="w-12 h-12 flex items-center justify-center bg-[#F5EFE6] rounded-2xl mb-6">
+                    <i class="fa-solid fa-heart text-[#634832] text-xl"></i>
+                </div>
+                <h4 class="font-extrabold text-lg leading-tight text-[#4A3728]">Pre-Wedding<br>Indoor</h4>
+            </div>
+
+            <div onclick="switchCategory('outdoor')" id="cat-outdoor" class="snap-center flex-shrink-0 w-64 cursor-pointer border-2 border-transparent bg-white p-10 rounded-[2.5rem] shadow-sm transition-all duration-300 flex flex-col items-start">
+                <div class="w-12 h-12 flex items-center justify-center bg-[#F5EFE6] rounded-2xl mb-6">
+                    <i class="fa-solid fa-camera-retro text-[#634832] text-xl"></i>
+                </div>
+                <h4 class="font-extrabold text-lg leading-tight text-[#4A3728]">Studio<br>Outdoor</h4>
+            </div>
+
+            <div onclick="switchCategory('event')" id="cat-event" class="snap-center flex-shrink-0 w-64 cursor-pointer border-2 border-transparent bg-white p-10 rounded-[2.5rem] shadow-sm transition-all duration-300 flex flex-col items-start">
+                <div class="w-12 h-12 flex items-center justify-center bg-[#F5EFE6] rounded-2xl mb-6">
+                    <i class="fa-solid fa-calendar-check text-[#634832] text-xl"></i>
+                </div>
+                <h4 class="font-extrabold text-lg leading-tight text-[#4A3728]">Sewa<br>Acara</h4>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 container mx-auto px-6">
+        <div id="pricing-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            </div>
+    </section>
+
+    <section class="py-20 bg-[#F5EFE6]">
+        <div class="container mx-auto px-6">
+            <h3 class="text-3xl font-bold text-[#634832] mb-12 text-center">Perbandingan Detail Paket</h3>
+            <div class="overflow-x-auto bg-white rounded-3xl shadow-sm border border-[#EADDCA]">
+                <table class="w-full text-left border-collapse min-w-[600px]">
+                    <thead>
+                        <tr class="bg-[#634832] text-white">
+                            <th class="p-6">Fitur Utama</th>
+                            <th class="p-6 text-center">Paket Hemat</th>
+                            <th class="p-6 text-center">Paket Reguler</th>
+                            <th class="p-6 text-center">Paket Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-body" class="text-[#826A56]">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 text-center bg-white">
+        <h3 class="text-2xl font-bold text-[#634832] mb-6">Tidak ada paket yang dicari?</h3>
+        <p class="mb-8 text-[#826A56]">Konsultasikan kebutuhan custom kamu langsung dengan tim kami.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://wa.me/6281322699098" class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold flex items-center space-x-2 hover:scale-105 transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span>Hubungi via WhatsApp</span>
+            </a>
+            <a href="https://instagram.com/dthree_studio" class="bg-[#833ab4] text-white px-8 py-4 rounded-full font-bold flex items-center space-x-2 hover:scale-105 transition">
+                <i class="fa-brands fa-instagram text-xl"></i>
+                <span>DM Instagram</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-[#FDFBF7]">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-extrabold text-[#634832] mb-12 text-center">Lokasi Studio Kami</h3>
+            <div class="h-[450px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                <iframe 
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=DTHREE%20FOTO%20STUDIO%2C%20Jalan%20Rajawali%2C%20Palangka%2C%20Palangka%20Raya%20City%2C%20Central%20Kalimantan%2C%20Indonesia&maptype=roadmap" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-[#EADDCA] bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-[#826A56]">
+            <p class="font-bold tracking-widest text-sm uppercase">© 2026 Dthree Studio Palangka Raya</p>
+            <div class="flex space-x-8">
+                <a href="https://instagram.com/dthree_studio" class="hover:text-[#634832] text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-[#25D366] text-2xl transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DATA PRICING
+        const pricingData = {
+            family: {
+                packages: [
+                    { name: "Family 1", price: "Rp 250.000", bg: "1 Background", pose: "3 Pose", members: "Maks. 5 Orang", costume: "1 Kostum Pribadi", print: "3 Foto 8RS", softfile: "G-Drive Link" },
+                    { name: "Family 2", price: "Rp 450.000", bg: "2 Background", pose: "5 Pose", members: "Maks. 10 Orang", costume: "2 Kostum Pribadi", print: "5 Foto 8RS + 1 Bingkai", softfile: "G-Drive Link" },
+                    { name: "Family 3", price: "Rp 750.000", bg: "3 Background", pose: "10 Pose", members: "Maks. 15 Orang", costume: "3 Kostum Pribadi", print: "10 Foto 8RS & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" }
+                ],
+                features: ["Tema Background", "Jumlah Pose", "Maks. Anggota", "Jumlah Kostum", "Cetak Foto", "Akses Softfile"]
+            },
+            prewed: {
+                packages: [
+                    { name: "Prewed 1", price: "Rp 350.000", bg: "1 Background", pose: "5 Pose", members: "2 Orang", costume: "2 Kostum Pribadi", print: "5 Foto 6RS", softfile: "G-Drive Link" },
+                    { name: "Prewed 2", price: "Rp 500.000", bg: "2 Background", pose: "10 Pose", members: "2 Orang", costume: "3 Kostum Pribadi", print: "10 Foto 6RS", softfile: "G-Drive Link" },
+                    { name: "Prewed 3", price: "Rp 850.000", bg: "3 Background", pose: "15 Pose", members: "2 Orang", costume: "4 Kostum Pribadi", print: "15 Foto 6RS & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" }
+                ],
+                features: ["Tema Background", "Sesi Gaya", "Kapasitas", "Kostum & MUA", "Hasil Cetak", "Akses Softfile"]
+            },
+            outdoor: {
+                packages: [
+                    { name: "Outdoor Lite", price: "Rp 1.250.000", bg: "1 Fotografer", pose: "Unlimited", members: "Maks. 5 Orang", costume: "Tidak Ada", print: "10 File Edit", softfile: "USB Flashdisk" },
+                    { name: "Outdoor Pro", price: "Rp 1.750.000", bg: "2 Fotografer", pose: "Unlimited", members: "Maks. 10 Orang", costume: "1 Album 10 Sheet & Foto 16RS + Frame", print: "20 File Edit", softfile: "USB Flashdisk" },
+                ],
+                features: ["Jumlah Fotografer", "Sesi Gaya", "Kapasitas", "Tambahan Fitur", "File Editing", "Akses Softfile"]
+            },
+            event: {
+                packages: [
+                    { name: "Event Bronze", price: "Rp 1.750.000", bg: "1 Hari", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "80 File Edit & Cetak 4R", print: "Album & 1 Foto 8RS + Bingkai", softfile: "G-Drive Link" },
+                    { name: "Event Silver", price: "Rp 2.750.000", bg: "2 Hari (max)", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "120 File Edit & Cetak 4R", print: "Album & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" },
+                    { name: "Event Gold", price: "Rp 4.250.000", bg: "2 Hari (max)", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "160 File Edit & Cetak 4R", print: "Album, 1 Foto 16RS + Bingkai & Wedding Book", softfile: "G-Drive Link" }
+                ],
+                features: ["Jumlah Hari Acara", "Gaya & Jumlah Foto", "Durasi per 1 Hari", "Output Foto", "Tambahan", "Akses Softfile"]
+            }
+        };
+
+        const pricingContainer = document.getElementById('pricing-container');
+        const comparisonBody = document.getElementById('comparison-body');
+
+        function switchCategory(cat) {
+            // Update Active Card UI
+            document.querySelectorAll('[id^="cat-"]').forEach(el => el.classList.remove('active-card'));
+            document.getElementById(`cat-${cat}`).classList.add('active-card');
+
+            const data = pricingData[cat];
+
+            // Render Pricing Cards
+            pricingContainer.innerHTML = data.packages.map(pkg => `
+                <div class="bg-white p-8 rounded-[2.5rem] border border-[#EADDCA] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <h5 class="text-sm font-bold text-[#826A56] uppercase tracking-widest mb-2">${pkg.name}</h5>
+                    <div class="text-3xl font-extrabold text-[#634832] mb-6">${pkg.price}</div>
+                    <ul class="space-y-4 mb-8 text-sm flex-grow">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.bg}</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.pose}</li>
+                        ${cat === 'family' || cat === 'prewed' ? `<li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.members}</li>` : ''}
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.costume}</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.print}</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.softfile}</li>
+                    </ul>
+                    <button class="w-full bg-[#634832] text-white py-4 rounded-2xl font-bold hover:bg-[#4A3728] transition uppercase text-xs tracking-widest">
+                        Pilih Paket ${pkg.name}
+                    </button>
+                </div>
+            `).join('');
+
+            // Render Comparison Table
+            const rows = data.features;
+            comparisonBody.innerHTML = rows.map((feature, i) => {
+                const keys = ['bg', 'pose', 'members', 'costume', 'print', 'softfile'];
+                return `
+                    <tr class="border-b border-[#F5EFE6]">
+                        <td class="p-6 font-bold text-[#634832]">${feature}</td>
+                        <td class="p-6 text-center">${data.packages[0][keys[i]]}</td>
+                        <td class="p-6 text-center bg-[#FDFBF7] font-semibold">${data.packages[1][keys[i]]}</td>
+                        <td class="p-6 text-center">${data.packages[2][keys[i]]}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Initialize with Family Category
+        switchCategory('family');
+
+        // Mobile Menu Toggle (Same as galeri.html)
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            const isOpen = menu.classList.contains('opacity-100');
+            menu.className = isOpen ? 
+                "absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-6 space-y-4 shadow-xl opacity-0 -translate-y-4 pointer-events-none transition-all duration-300" :
+                "absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-6 space-y-4 shadow-xl opacity-100 translate-y-0 pointer-events-auto transition-all duration-300";
+        });
+    </script>
+</body>
+</html>
