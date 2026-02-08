@@ -1,0 +1,37 @@
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid { column-count: 3; }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+
+        #lightbox-img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .zoom-active { cursor: zoom-out !important; transform: scale(1.8) !important; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .active-card {
+                border-color: #634832 !important;
+                background-color: #FDFBF7 !important;
+                box-shadow: 0 20px 25px -5px rgba(99, 72, 50, 0.1), 0 10px 10px -5px rgba(99, 72, 50, 0.04);
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px -10px rgba(99, 72, 50, 0.2);
+            }
+        .scroll-container-wrapper {
+            padding-top: 20px; 
+            margin-top: -20px;
+        }
+            
+            .snap-center {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }

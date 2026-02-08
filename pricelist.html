@@ -17,32 +17,10 @@
     <title>Price List | Dthree Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .active-card {
-                border-color: #634832 !important;
-                background-color: #FDFBF7 !important;
-                box-shadow: 0 20px 25px -5px rgba(99, 72, 50, 0.1), 0 10px 10px -5px rgba(99, 72, 50, 0.04);
-                transform: translateY(-5px);
-                box-shadow: 0 15px 30px -10px rgba(99, 72, 50, 0.2);
-            }
-        .scroll-container-wrapper {
-            padding-top: 20px; 
-            margin-top: -20px;
-        }
-            
-            .snap-center {
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-    </style>
+    <link rel=stylesheet href="style.css">
 </head>
 <body class="bg-[#FDFBF7] text-[#4A3728]">
-
+    
     <header class="fixed w-full z-50 bg-[#FDFBF7]/90 backdrop-blur-md shadow-sm border-b border-[#EADDCA]">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-extrabold tracking-tighter text-[#634832]">DTHREE STUDIO</a>
@@ -172,98 +150,6 @@
         </div>
     </footer>
 
-    <script>
-        // DATA PRICING
-        const pricingData = {
-            family: {
-                packages: [
-                    { name: "Family 1", price: "Rp 250.000", bg: "1 Background", pose: "3 Pose", members: "Maks. 5 Orang", costume: "1 Kostum Pribadi", print: "3 Foto 8RS", softfile: "G-Drive Link" },
-                    { name: "Family 2", price: "Rp 450.000", bg: "2 Background", pose: "5 Pose", members: "Maks. 10 Orang", costume: "2 Kostum Pribadi", print: "5 Foto 8RS + 1 Bingkai", softfile: "G-Drive Link" },
-                    { name: "Family 3", price: "Rp 750.000", bg: "3 Background", pose: "10 Pose", members: "Maks. 15 Orang", costume: "3 Kostum Pribadi", print: "10 Foto 8RS & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" }
-                ],
-                features: ["Tema Background", "Jumlah Pose", "Maks. Anggota", "Jumlah Kostum", "Cetak Foto", "Akses Softfile"]
-            },
-            prewed: {
-                packages: [
-                    { name: "Prewed 1", price: "Rp 350.000", bg: "1 Background", pose: "5 Pose", members: "2 Orang", costume: "2 Kostum Pribadi", print: "5 Foto 6RS", softfile: "G-Drive Link" },
-                    { name: "Prewed 2", price: "Rp 500.000", bg: "2 Background", pose: "10 Pose", members: "2 Orang", costume: "3 Kostum Pribadi", print: "10 Foto 6RS", softfile: "G-Drive Link" },
-                    { name: "Prewed 3", price: "Rp 850.000", bg: "3 Background", pose: "15 Pose", members: "2 Orang", costume: "4 Kostum Pribadi", print: "15 Foto 6RS & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" }
-                ],
-                features: ["Tema Background", "Sesi Gaya", "Kapasitas", "Kostum & MUA", "Hasil Cetak", "Akses Softfile"]
-            },
-            outdoor: {
-                packages: [
-                    { name: "Outdoor Lite", price: "Rp 1.250.000", bg: "1 Fotografer", pose: "Unlimited", members: "Maks. 5 Orang", costume: "Tidak Ada", print: "10 File Edit", softfile: "USB Flashdisk" },
-                    { name: "Outdoor Pro", price: "Rp 1.750.000", bg: "2 Fotografer", pose: "Unlimited", members: "Maks. 10 Orang", costume: "1 Album 10 Sheet & Foto 16RS + Frame", print: "20 File Edit", softfile: "USB Flashdisk" },
-                ],
-                features: ["Jumlah Fotografer", "Sesi Gaya", "Kapasitas", "Tambahan Fitur", "File Editing", "Akses Softfile"]
-            },
-            event: {
-                packages: [
-                    { name: "Event Bronze", price: "Rp 1.750.000", bg: "1 Hari", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "80 File Edit & Cetak 4R", print: "Album & 1 Foto 8RS + Bingkai", softfile: "G-Drive Link" },
-                    { name: "Event Silver", price: "Rp 2.750.000", bg: "2 Hari (max)", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "120 File Edit & Cetak 4R", print: "Album & 1 Foto 12RS + Bingkai", softfile: "G-Drive Link" },
-                    { name: "Event Gold", price: "Rp 4.250.000", bg: "2 Hari (max)", pose: "Journalistic, unlimited shoot", members: "8 Jam rumahan / 4 Jam gedung/hotel", costume: "160 File Edit & Cetak 4R", print: "Album, 1 Foto 16RS + Bingkai & Wedding Book", softfile: "G-Drive Link" }
-                ],
-                features: ["Jumlah Hari Acara", "Gaya & Jumlah Foto", "Durasi per 1 Hari", "Output Foto", "Tambahan", "Akses Softfile"]
-            }
-        };
-
-        const pricingContainer = document.getElementById('pricing-container');
-        const comparisonBody = document.getElementById('comparison-body');
-
-        function switchCategory(cat) {
-            // Update Active Card UI
-            document.querySelectorAll('[id^="cat-"]').forEach(el => el.classList.remove('active-card'));
-            document.getElementById(`cat-${cat}`).classList.add('active-card');
-
-            const data = pricingData[cat];
-
-            // Render Pricing Cards
-            pricingContainer.innerHTML = data.packages.map(pkg => `
-                <div class="bg-white p-8 rounded-[2.5rem] border border-[#EADDCA] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <h5 class="text-sm font-bold text-[#826A56] uppercase tracking-widest mb-2">${pkg.name}</h5>
-                    <div class="text-3xl font-extrabold text-[#634832] mb-6">${pkg.price}</div>
-                    <ul class="space-y-4 mb-8 text-sm flex-grow">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.bg}</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.pose}</li>
-                        ${cat === 'family' || cat === 'prewed' ? `<li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.members}</li>` : ''}
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.costume}</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.print}</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.softfile}</li>
-                    </ul>
-                    <button class="w-full bg-[#634832] text-white py-4 rounded-2xl font-bold hover:bg-[#4A3728] transition uppercase text-xs tracking-widest">
-                        Pilih Paket ${pkg.name}
-                    </button>
-                </div>
-            `).join('');
-
-            // Render Comparison Table
-            const rows = data.features;
-            comparisonBody.innerHTML = rows.map((feature, i) => {
-                const keys = ['bg', 'pose', 'members', 'costume', 'print', 'softfile'];
-                return `
-                    <tr class="border-b border-[#F5EFE6]">
-                        <td class="p-6 font-bold text-[#634832]">${feature}</td>
-                        <td class="p-6 text-center">${data.packages[0][keys[i]]}</td>
-                        <td class="p-6 text-center bg-[#FDFBF7] font-semibold">${data.packages[1][keys[i]]}</td>
-                        <td class="p-6 text-center">${data.packages[2][keys[i]]}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // Initialize with Family Category
-        switchCategory('family');
-
-        // Mobile Menu Toggle (Same as galeri.html)
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            const isOpen = menu.classList.contains('opacity-100');
-            menu.className = isOpen ? 
-                "absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-6 space-y-4 shadow-xl opacity-0 -translate-y-4 pointer-events-none transition-all duration-300" :
-                "absolute top-full left-0 w-full bg-[#FDFBF7] border-t border-[#EADDCA] px-6 py-6 space-y-4 shadow-xl opacity-100 translate-y-0 pointer-events-auto transition-all duration-300";
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
