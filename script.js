@@ -81,9 +81,9 @@ function switchCategory(cat) {
                         <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.print}</li>
                         <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> ${pkg.softfile}</li>
                     </ul>
-                    <button class="w-full bg-[#634832] text-white py-4 rounded-2xl font-bold hover:bg-[#4A3728] transition uppercase text-xs tracking-widest">
+                    <a href="booking.html"><button class="w-full bg-[#634832] text-white py-4 rounded-2xl font-bold hover:bg-[#4A3728] transition uppercase text-xs tracking-widest">
                         Pilih Paket ${pkg.name}
-                    </button>
+                    </button></a>
                 </div>
             `).join('');
 
