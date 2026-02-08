@@ -57,7 +57,7 @@ const images = [
 // end
 
 const pricingContainer = document.getElementById('pricing-container');
- const comparisonBody = document.getElementById('comparison-body');
+const comparisonBody = document.getElementById('comparison-body');
 
 function switchCategory(cat) {
     if (!pricingContainer) return; // Mencegah error jika bukan di hal pricelist
@@ -101,6 +101,7 @@ function switchCategory(cat) {
                 `;
             }).join('');
         }
+        
         if (pricingContainer) switchCategory('family');
 
 const galleryWrapper = document.getElementById('gallery-wrapper');
